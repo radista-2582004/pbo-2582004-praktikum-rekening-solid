@@ -5,10 +5,13 @@ public class Deposito extends Rekening implements BerBunga {
         super(nomor, pemilik, saldo);
         this.bunga = bunga;
     }
+
     // Exception in thread "main" java.lang.UnsupportedOperationException: Deposito tidak bisa ditarik
+    // Diperbaiki: tarik mengembalikan false agar memenuhi kontrak Rekening.tarik
     @Override
     public boolean tarik(int jumlah) {
-        throw new UnsupportedOperationException("Deposito tidak bisa ditarik");
+        // Deposito tidak bisa ditarik sebelum jatuh tempo, jadi tarik mengembalikan false
+        return false;
     }
 
     @Override
